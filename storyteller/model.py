@@ -34,6 +34,7 @@ class StoryTeller:
         self.painter = StableDiffusionPipeline.from_pretrained(
             config.painter,
             use_auth_token=False,
+            torch_dtype=torch.float16,
         ).to(painter_device)
         self.speaker = TTS(config.speaker)
         self.sample_rate = self.speaker.synthesizer.output_sample_rate
